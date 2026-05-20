@@ -93,7 +93,7 @@ const About = () => {
               >
                 <div className="rounded-xl overflow-hidden aspect-4/5 bg-stone-50">
                   <img 
-                    src={owner.image} 
+                    src={owner.image.startsWith('http') ? owner.image : `${import.meta.env.BASE_URL}${owner.image}`} 
                     alt={owner.name} 
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
                   />

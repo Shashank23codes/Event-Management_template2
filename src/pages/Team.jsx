@@ -71,7 +71,7 @@ const Team = () => {
             {/* Image Container */}
             <div className="w-full md:w-80 h-96 rounded-2xl overflow-hidden shadow-xs border border-stone-200 shrink-0 relative group">
               <img 
-                src={founder.image} 
+                src={founder.image.startsWith('http') ? founder.image : `${import.meta.env.BASE_URL}${founder.image}`} 
                 alt={founder.name} 
                 className="w-full h-full object-cover object-top group-hover:scale-102 transition-transform duration-700 grayscale hover:grayscale-0"
               />
@@ -162,7 +162,7 @@ const Team = () => {
                 {/* Image Wrap */}
                 <div className="aspect-3/4 overflow-hidden relative border-b border-stone-100 shrink-0">
                   <img 
-                    src={member.image} 
+                    src={member.image.startsWith('http') ? member.image : `${import.meta.env.BASE_URL}${member.image}`} 
                     alt={member.name} 
                     className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700 grayscale group-hover:grayscale-0"
                   />

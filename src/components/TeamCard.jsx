@@ -24,7 +24,7 @@ const TeamCard = ({ member }) => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src={member.image} 
+          src={member.image.startsWith('http') ? member.image : `${import.meta.env.BASE_URL}${member.image}`} 
           alt={member.name} 
           className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105" 
         />

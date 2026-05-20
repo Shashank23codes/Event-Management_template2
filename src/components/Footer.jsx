@@ -93,7 +93,7 @@ const Footer = () => {
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-stone-400 mb-6 font-sans">
               Say Hello!
             </h4>
-            <div className="flex flex-wrap gap-3 max-w-sm">
+            <div className="flex flex-wrap gap-3 max-w-sm mb-6">
               <a
                 href={companyInfo.socials.instagram}
                 target="_blank"
@@ -130,6 +130,10 @@ const Footer = () => {
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>+91 80100 72657</span>
               </a>
+            </div>
+            <div className="text-xs text-stone-500 font-light font-sans max-w-xs">
+              <span className="block font-bold uppercase tracking-[0.15em] text-[9px] mb-1.5 text-stone-400">Nagpur Office</span>
+              <span className="text-stone-700 leading-relaxed font-normal">{companyInfo.address}</span>
             </div>
           </div>
 

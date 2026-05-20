@@ -244,7 +244,7 @@ const Home = () => {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-md border border-stone-200/60 group max-w-md mx-auto lg:mx-0">
                 <img 
-                  src="/teams-img/owner.jpeg" 
+                  src={`${import.meta.env.BASE_URL}teams-img/owner.jpeg`} 
                   alt="Nikhil Karadbhajne" 
                   className="w-full h-auto aspect-3/4 object-cover object-top group-hover:scale-103 transition-transform duration-700"
                 />
@@ -273,7 +273,7 @@ const Home = () => {
                 Having personally curated 300+ weddings and corporate affairs, his meticulous attention to detail and unwavering commitment to excellence has positioned Trends Management as the premier event architecture firm in Central India.
               </p>
               <div className="pt-6">
-                <img src="/tm logo.png" alt="Trends Management" className="h-12 object-contain" />
+                <img src={`${import.meta.env.BASE_URL}tm logo.png`} alt="Trends Management" className="h-12 object-contain" />
               </div>
             </motion.div>
           </div>

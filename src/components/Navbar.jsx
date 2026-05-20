@@ -48,7 +48,7 @@ const Navbar = () => {
             {/* Custom Brand Logo */}
             <Link to="/" className="flex items-center gap-3 group focus:outline-none">
               <img 
-                src="/tm logo.png" 
+                src={`${import.meta.env.BASE_URL}tm logo.png`} 
                 alt="Trends Management Logo" 
                 className="w-9 h-9 object-contain group-hover:scale-103 transition-transform duration-300" 
               />
