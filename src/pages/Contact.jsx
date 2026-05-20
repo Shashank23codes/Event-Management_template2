@@ -1,0 +1,396 @@
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Phone, MapPin, Clock, ShieldCheck, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { companyInfo } from '../data/companyInfo';
+import CustomSelect from '../components/CustomSelect';
+
+const Contact = () => {
+  const location = useLocation();
+
+  // Form State
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    eventType: 'Wedding',
+    destination: '',
+    eventDate: '',
+    message: ''
+  });
+
+  // Success Notification State
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+
+  // Handle selected event from route state (e.g. from service details or cards)
+  useEffect(() => {
+    if (location.state && location.state.selectedEvent) {
+      const selected = location.state.selectedEvent;
+      if (selected.includes("Destination")) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setFormData(prev => ({ ...prev, eventType: 'Destination Wedding' }));
+      } else if (selected.includes("Corporate") || selected.includes("Conference")) {
+        setFormData(prev => ({ ...prev, eventType: 'Corporate' }));
+      } else if (selected.includes("Birthday")) {
+        setFormData(prev => ({ ...prev, eventType: 'Birthday' }));
+      } else {
+        setFormData(prev => ({ ...prev, eventType: 'Wedding' }));
+      }
+    }
+  }, [location.state]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleCustomSelectChange = (e) => {
+    setFormData(prev => ({ ...prev, eventType: e.target.value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError('');
+
+    // Phone number validation (mandatory)
+    if (!formData.phone.trim()) {
+      setError('Phone number is strictly required to process your quote.');
+      return;
+    }
+
+    if (!formData.fullName.trim()) {
+      setError('Please provide your name.');
+      return;
+    }
+
+    // Submit log
+    console.log('Lead Generation Submitted Successfully!', formData);
+    
+    // Trigger Success State
+    setSubmitted(true);
+
+    // Reset Form
+    setFormData({
+      fullName: '',
+      email: '',
+      phone: '',
+      eventType: 'Wedding',
+      destination: '',
+      eventDate: '',
+      message: ''
+    });
+
+    // Reset Success Alert after 6 seconds
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 6000);
+  };
+
+  const eventOptions = [
+    { value: 'Wedding', label: 'Wedding Planning' },
+    { value: 'Destination Wedding', label: 'Destination Wedding' },
+    { value: 'Corporate', label: 'Corporate Events' },
+    { value: 'Birthday', label: 'Birthday Parties' },
+    { value: 'Other', label: 'Other Occasions' }
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="relative w-full pt-20 bg-[#fbfbfa]"
+    >
+      {/* HEADER SECTION */}
+      <section className="relative py-20 md:py-28 bg-[#f5f5f3] overflow-hidden border-b border-stone-200/60">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(184,144,71,0.04)_0%,transparent_60%)] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
+          <span className="text-festival-orange font-bold text-xs uppercase tracking-widest block mb-3">Get In Touch</span>
+          <h1 className="text-3xl md:text-6xl font-playfair font-normal leading-tight text-stone-900 mb-6">
+            Begin Planning Your <span className="text-festival-orange font-semibold italic">Masterpiece</span>
+          </h1>
+          <p className="text-stone-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-light">
+            Ready to design a legendary event? Complete the form below to receive a customized spatial design budget framework and free expert consultation.
+          </p>
+        </div>
+      </section>
+
+      {/* CORE GRID */}
+      <section className="py-20 bg-[#fbfbfa] relative">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            {/* LEFT COLUMN: Lead Form */}
+            <div className="lg:col-span-7">
+              <div className="bg-white rounded-3xl p-6 md:p-10 border border-stone-200/80 shadow-xs relative">
+                
+                <h2 className="text-xl md:text-3xl font-playfair font-normal text-stone-900 mb-2 tracking-tight">
+                  Request A Free Quote
+                </h2>
+                <p className="text-stone-500 text-xs md:text-sm mb-8 font-light">
+                  Fields marked with * are required. We strictly respect your privacy.
+                </p>
+
+                {/* Error Banner */}
+                {error && (
+                  <div className="mb-6 flex items-center gap-2 p-4 bg-rose-50 border border-rose-200 rounded-xl text-rose-800 text-xs md:text-sm">
+                    <AlertCircle size={18} className="shrink-0" />
+                    <span>{error}</span>
+                  </div>
+                )}
+
+                {/* Success Banner */}
+                <AnimatePresence>
+                  {submitted && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="mb-6 flex items-start gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800"
+                    >
+                      <CheckCircle2 size={20} className="shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-bold text-sm md:text-base">Inquiry Logged Successfully!</h4>
+                        <p className="text-xs text-stone-700 mt-1 leading-normal font-light">
+                          Thank you for contacting Trends Management. Founder Nikhil Karadbhajne or our curation team will call you back within 2-4 business hours!
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Main Form */}
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  
+                  {/* Row 1: Name & Email */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="fullName" className="text-[10px] font-bold text-stone-600 uppercase tracking-widest">
+                        Full Name *
+                      </label>
+                      <input 
+                        type="text" 
+                        id="fullName" 
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        placeholder="Rahul Deshmukh"
+                        className="w-full bg-[#fbfbfa] border border-stone-200 focus:border-festival-orange/60 focus:bg-white rounded-xl px-4 py-3.5 text-stone-900 text-sm focus:outline-none transition-all placeholder:text-stone-400 font-sans"
+                        required
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="email" className="text-[10px] font-bold text-stone-600 uppercase tracking-widest">
+                        Email Address
+                      </label>
+                      <input 
+                        type="email" 
+                        id="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="rahul@example.com"
+                        className="w-full bg-[#fbfbfa] border border-stone-200 focus:border-festival-orange/60 focus:bg-white rounded-xl px-4 py-3.5 text-stone-900 text-sm focus:outline-none transition-all placeholder:text-stone-400 font-sans"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 2: Phone & Event Type */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="phone" className="text-[10px] font-bold text-stone-600 uppercase tracking-widest">
+                        Phone Number *
+                      </label>
+                      <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91 98765 XXXXX"
+                        className="w-full bg-[#fbfbfa] border border-stone-200 focus:border-festival-orange/60 focus:bg-white rounded-xl px-4 py-3.5 text-stone-900 text-sm focus:outline-none transition-all placeholder:text-stone-400 font-sans"
+                        required
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="eventType" className="text-[10px] font-bold text-stone-600 uppercase tracking-widest">
+                        Event Type
+                      </label>
+                      <CustomSelect
+                        options={eventOptions}
+                        value={formData.eventType}
+                        onChange={handleCustomSelectChange}
+                        isDark={false}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Conditionally Rendered Destination Field (Animate Presence) */}
+                  <AnimatePresence>
+                    {formData.eventType === 'Destination Wedding' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex flex-col gap-2 overflow-hidden"
+                      >
+                        <label htmlFor="destination" className="text-[10px] font-bold text-festival-orange uppercase tracking-widest">
+                          Dream Destination * (Udaipur, Goa, Jaipur, etc.)
+                        </label>
+                        <input 
+                          type="text" 
+                          id="destination" 
+                          name="destination"
+                          value={formData.destination}
+                          onChange={handleChange}
+                          placeholder="e.g. Udaipur Palace or South Goa beach"
+                          className="w-full bg-[#fbfbfa] border border-festival-orange/30 focus:border-festival-orange rounded-xl px-4 py-3.5 text-stone-900 text-sm focus:outline-none transition-all placeholder:text-stone-400 font-sans"
+                          required={formData.eventType === 'Destination Wedding'}
+                        />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Row 3: Event Date */}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="eventDate" className="text-[10px] font-bold text-stone-600 uppercase tracking-widest">
+                      Proposed Event Date
+                    </label>
+                    <input 
+                      type="date" 
+                      id="eventDate" 
+                      name="eventDate"
+                      value={formData.eventDate}
+                      onChange={handleChange}
+                      className="w-full bg-[#fbfbfa] border border-stone-200 focus:border-festival-orange/60 focus:bg-white rounded-xl px-4 py-3.5 text-stone-905 text-sm focus:outline-none transition-all cursor-pointer font-sans"
+                    />
+                  </div>
+
+                  {/* Message Field */}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="message" className="text-[10px] font-bold text-stone-600 uppercase tracking-widest">
+                      Event Vision & Message
+                    </label>
+                    <textarea 
+                      id="message" 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={5}
+                      placeholder="Tell us about guest capacity, specific colors, visual themes, or expectations..."
+                      className="w-full bg-[#fbfbfa] border border-stone-200 focus:border-festival-orange/60 focus:bg-white rounded-xl px-4 py-3.5 text-stone-900 text-sm focus:outline-none transition-all placeholder:text-stone-400 resize-none font-sans"
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <button 
+                    type="submit"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-stone-900 hover:bg-stone-850 text-white rounded-full py-4 text-xs font-bold uppercase tracking-[0.2em] hover:scale-[1.01] transition-all cursor-pointer shadow-xs focus:outline-none"
+                  >
+                    Submit Quotation Request
+                    <Send size={14} />
+                  </button>
+
+                </form>
+
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN: Contact Info + Google Maps */}
+            <div className="lg:col-span-5 flex flex-col gap-8">
+              
+              {/* Company Info Box */}
+              <div className="bg-white rounded-3xl p-6 md:p-8 border border-stone-200/80 shadow-xs flex flex-col gap-6">
+                
+                <h3 className="text-xl font-playfair font-normal text-stone-900 tracking-tight border-l-2 border-festival-orange pl-3">
+                  Trends Headquarters
+                </h3>
+
+                <div className="flex flex-col gap-4 text-xs md:text-sm font-sans">
+                  
+                  {/* Address */}
+                  <div className="flex items-start gap-3">
+                    <MapPin size={18} className="text-festival-orange mt-0.5 shrink-0" />
+                    <div>
+                      <span className="text-stone-400 text-[10px] block uppercase tracking-widest font-bold">Office Location</span>
+                      <span className="text-stone-800 font-semibold leading-relaxed font-light">{companyInfo.address}</span>
+                    </div>
+                  </div>
+
+                  {/* Phone */}
+                  <a 
+                    href={`tel:${companyInfo.phone}`} 
+                    className="flex items-start gap-3 text-stone-800 hover:text-festival-orange transition-colors"
+                  >
+                    <Phone size={18} className="text-festival-orange mt-0.5 shrink-0" />
+                    <div>
+                      <span className="text-stone-400 text-[10px] block uppercase tracking-widest font-bold">Call Directly</span>
+                      <span className="font-semibold">{companyInfo.phoneDisplay}</span>
+                    </div>
+                  </a>
+
+                  {/* Email */}
+                  <a 
+                    href={`mailto:${companyInfo.email}`} 
+                    className="flex items-start gap-3 text-stone-800 hover:text-festival-orange transition-colors"
+                  >
+                    <Mail size={18} className="text-festival-orange mt-0.5 shrink-0" />
+                    <div>
+                      <span className="text-stone-400 text-[10px] block uppercase tracking-widest font-bold">Email Inquiry</span>
+                      <span className="font-semibold">{companyInfo.email}</span>
+                    </div>
+                  </a>
+
+                  {/* Business Hours */}
+                  <div className="flex items-start gap-3">
+                    <Clock size={18} className="text-festival-orange mt-0.5 shrink-0" />
+                    <div>
+                      <span className="text-stone-400 text-[10px] block uppercase tracking-widest font-bold">Office Hours</span>
+                      <span className="text-stone-800 font-semibold font-light">{companyInfo.hours}</span>
+                    </div>
+                  </div>
+
+                  {/* GST */}
+                  <div className="flex items-start gap-3 pt-3 border-t border-stone-250">
+                    <ShieldCheck size={18} className="text-festival-orange mt-0.5 shrink-0" />
+                    <div>
+                      <span className="text-stone-400 text-[10px] block uppercase tracking-widest font-bold">Official Registration GST</span>
+                      <span className="text-stone-600 font-bold uppercase tracking-wider text-xs font-sans">{companyInfo.gst}</span>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Google Maps Iframe */}
+              <div className="bg-white rounded-3xl overflow-hidden border border-stone-200/80 p-1.5 shadow-sm h-[260px]">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d14882.23469087532!2d79.0712497!3d21.1699997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0fa3af2bc7f%3A0x6b4457e51c8901eb!2sSadar%2C%20Nagpur%2C%20Maharashtra%20440001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0, borderRadius: '1.25rem' }} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Google Maps Sadar Nagpur - Trends Management"
+                />
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </motion.div>
+  );
+};
+
+export default Contact;
