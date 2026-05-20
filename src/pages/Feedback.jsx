@@ -3,8 +3,15 @@ import { Star, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { feedbackData } from '../data/feedbackData';
 import FeedbackCard from '../components/FeedbackCard';
+import { useSEO } from '../hooks/useSEO';
 
 const Feedback = () => {
+  useSEO({
+    title: 'Verified Client Reviews & Testimonials | Trends Management',
+    description: 'Read reviews and testimonials from our past couples, corporate groups, and clients. Discover why Trends Management is Nagpur\'s most trusted luxury event firm.',
+    keywords: 'Client Testimonials Nagpur, Event Reviews Nagpur, Best Wedding Planner Reviews, Trends Management Reviews'
+  });
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

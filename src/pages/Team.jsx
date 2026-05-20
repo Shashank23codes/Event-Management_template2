@@ -1,8 +1,15 @@
 import { motion } from 'framer-motion';
 import { Users2, ShieldCheck, HeartHandshake, Linkedin, Instagram, Quote, Sparkles } from 'lucide-react';
 import { teamData } from '../data/teamData';
+import { useSEO } from '../hooks/useSEO';
 
 const Team = () => {
+  useSEO({
+    title: 'Meet Our Elite Event Curators & Planners | Trends Management',
+    description: 'Get to know the elite planning crew of Trends Management. From destination producers to catering directors, our experts plan flawless events in Nagpur.',
+    keywords: 'Trends Management Team, Event Managers Nagpur, Wedding Planning Staff, Professional Curators'
+  });
+
   const founder = teamData.find(m => m.isFounder) || teamData[0];
   const members = teamData.filter(m => !m.isFounder);
 

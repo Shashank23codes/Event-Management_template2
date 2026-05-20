@@ -53,7 +53,7 @@ const AnimatedRoutes = () => {
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="flex flex-col min-h-screen bg-light-gray text-dark-text selection:bg-gold-500 selection:text-white">
         {/* Reset scroll on route changes */}
         <ScrollToTop />

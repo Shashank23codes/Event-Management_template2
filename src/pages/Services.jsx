@@ -4,8 +4,15 @@ import { Link } from 'react-router-dom';
 import { servicesData } from '../data/servicesData';
 import ServiceCard from '../components/ServiceCard';
 import { companyInfo } from '../data/companyInfo';
+import { useSEO } from '../hooks/useSEO';
 
 const Services = () => {
+  useSEO({
+    title: 'Luxury Event & Wedding Planning Services | Trends Management',
+    description: 'Explore the luxury planning services offered by Trends Management. We curate bespoke wedding themes, destination events, and grand corporate galas in Nagpur.',
+    keywords: 'Destination Wedding Service, Corporate Event Coordination, Wedding Planners Nagpur, Luxury Party Planners'
+  });
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

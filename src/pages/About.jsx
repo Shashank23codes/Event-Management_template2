@@ -3,8 +3,15 @@ import { ShieldCheck, Users, Compass, Award } from 'lucide-react';
 import { Linkedin, Instagram } from '../components/SocialIcons';
 import { teamData } from '../data/teamData';
 import TeamCard from '../components/TeamCard';
+import { useSEO } from '../hooks/useSEO';
 
 const About = () => {
+  useSEO({
+    title: 'Our Legacy & Founder | Trends Management Nagpur',
+    description: 'Learn the story behind Trends Management, Nagpur\'s premier event planners. Led by founder Nikhil Karadbhajne, we design luxury wedding ceremonies and events.',
+    keywords: 'Trends Management History, Nikhil Karadbhajne, Nagpur Event Planners, Event Architects Nagpur'
+  });
+
   // Extract owner profile
   const owner = teamData.find(member => member.isFounder);
 

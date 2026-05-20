@@ -3,8 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SlidersHorizontal, Image } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import PortfolioItem from '../components/PortfolioItem';
+import { useSEO } from '../hooks/useSEO';
 
 const Projects = () => {
+  useSEO({
+    title: 'Successful Event Curations Gallery | Trends Management',
+    description: 'Explore the portfolio gallery of Trends Management. Take inspiration from our luxury weddings, grand floral stages, and premium corporate summits in Nagpur.',
+    keywords: 'Real Weddings Nagpur, Destination Wedding Gallery, Corporate Stage Design, Event Photos Nagpur'
+  });
+
   const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = ["All", "Destination Wedding", "Wedding", "Corporate", "Social"];

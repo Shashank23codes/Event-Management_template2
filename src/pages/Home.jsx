@@ -12,8 +12,15 @@ import PortfolioItem from '../components/PortfolioItem';
 import EnquiryModal from '../components/EnquiryModal';
 import PartnerSlider from '../components/PartnerSlider';
 import VideoReelGrid from '../components/VideoReelGrid';
+import { useSEO } from '../hooks/useSEO';
 
 const Home = () => {
+  useSEO({
+    title: 'Trends Management | Premium Event Planners & Destination Wedding Specialists in Nagpur',
+    description: 'Trends Management is Nagpur\'s premier event planning company. Specializing in luxury weddings, grand destination weddings, and elite corporate curations.',
+    keywords: 'Event Management Nagpur, Wedding Planners Nagpur, Destination Weddings, Trends Management, Nikhil Karadbhajne'
+  });
+
   // Hero Carousel Slides Data
   const heroSlides = [
     {

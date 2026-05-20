@@ -4,8 +4,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, ShieldCheck, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { companyInfo } from '../data/companyInfo';
 import CustomSelect from '../components/CustomSelect';
+import { useSEO } from '../hooks/useSEO';
 
 const Contact = () => {
+  useSEO({
+    title: 'Contact Us & Send Enquiry | Trends Management',
+    description: 'Get in touch with Nagpur\'s luxury event architects. Request a customized quote or book a destination wedding consultation today.',
+    keywords: 'Contact Trends Management, Hire Wedding Planner Nagpur, Event Booking Nagpur, Office Address Trends'
+  });
+
   const location = useLocation();
 
   // Form State
