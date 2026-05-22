@@ -4,8 +4,8 @@ export const teamData = [
     name: "Nikhil Karadbhajne",
     role: "Founder & Chief Event Curator",
     image: "teams-img/owner.jpeg",
-    bio: "With over 12 years of experience in Nagpur's event industry, Nikhil started Trends Management with a vision to create unforgettable, legendary experiences. He has personally curated 300+ weddings and corporate affairs.",
-    quote: "We don't just plan events; we architect lifelong memories.",
+    bio: "Nikhil started his journey as a freelancer, managing teams and providing skilled manpower support to event companies across Nagpur. Years of experience, trust, and industry knowledge gradually transformed that network into Trends Management.",
+    quote: "We don’t just plan events; we turn journeys, dreams, and celebrations into lifelong memories.",
     isFounder: true,
     socials: {
       linkedin: "https://linkedin.com",

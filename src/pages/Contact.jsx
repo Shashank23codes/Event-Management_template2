@@ -30,7 +30,7 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  // Handle selected event from route state (e.g. from service details or cards)
+  // Handle selected event from route state (e.g. from Segment details or cards)
   useEffect(() => {
     if (location.state && location.state.selectedEvent) {
       const selected = location.state.selectedEvent;
@@ -56,7 +56,7 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, eventType: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -71,27 +71,51 @@ const Contact = () => {
       return;
     }
 
-    // Submit log
-    console.log('Lead Generation Submitted Successfully!', formData);
-    
-    // Trigger Success State
-    setSubmitted(true);
+    // Web3Forms payload
+    const submissionData = {
+      ...formData,
+      // IMPORTANT: Get your access key from https://web3forms.com/ using shashankgupta4068@gmail.com
+      access_key: "faf3502b-e8c4-42b8-9a63-15e8531aa738",
+      subject: `New Event Inquiry from ${formData.fullName}`
+    };
 
-    // Reset Form
-    setFormData({
-      fullName: '',
-      email: '',
-      phone: '',
-      eventType: 'Wedding',
-      destination: '',
-      eventDate: '',
-      message: ''
-    });
-
-    // Reset Success Alert after 6 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 6000);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(submissionData)
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        // Trigger Success State
+        setSubmitted(true);
+        
+        // Reset Form
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          eventType: 'Wedding',
+          destination: '',
+          eventDate: '',
+          message: ''
+        });
+        
+        // Reset Success Alert after 6 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 6000);
+      } else {
+        setError(result.message || 'Something went wrong!');
+      }
+    } catch (err) {
+      setError('Network error, please try again later.');
+    }
   };
 
   const eventOptions = [
@@ -325,7 +349,7 @@ const Contact = () => {
                     <MapPin size={18} className="text-festival-orange mt-0.5 shrink-0" />
                     <div>
                       <span className="text-stone-400 text-[10px] block uppercase tracking-widest font-bold">Office Location</span>
-                      <span className="text-stone-800 font-semibold leading-relaxed font-light">{companyInfo.address}</span>
+                      <span className="text-stone-800 font-semibold leading-relaxed">{companyInfo.address}</span>
                     </div>
                   </div>
 
@@ -358,18 +382,10 @@ const Contact = () => {
                     <Clock size={18} className="text-festival-orange mt-0.5 shrink-0" />
                     <div>
                       <span className="text-stone-400 text-[10px] block uppercase tracking-widest font-bold">Office Hours</span>
-                      <span className="text-stone-800 font-semibold font-light">{companyInfo.hours}</span>
+                      <span className="text-stone-800 font-semibold">{companyInfo.hours}</span>
                     </div>
                   </div>
 
-                  {/* GST */}
-                  <div className="flex items-start gap-3 pt-3 border-t border-stone-250">
-                    <ShieldCheck size={18} className="text-festival-orange mt-0.5 shrink-0" />
-                    <div>
-                      <span className="text-stone-400 text-[10px] block uppercase tracking-widest font-bold">Official Registration GST</span>
-                      <span className="text-stone-600 font-bold uppercase tracking-wider text-xs font-sans">{companyInfo.gst}</span>
-                    </div>
-                  </div>
 
                 </div>
 

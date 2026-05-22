@@ -95,7 +95,7 @@ const DestinationWeddingSection = () => {
               className="group relative h-[280px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl border border-stone-200/80"
             >
               {/* Overlay linear */}
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/40 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300 z-10" />
+              <div className="absolute inset-0 bg-linear-to-t from-stone-900 via-stone-900/40 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300 z-10" />
 
               {/* Destination Image */}
               <img 

@@ -4,7 +4,7 @@ import { companyInfo } from '../data/companyInfo';
 
 const WhatsAppButton = () => {
   // Construct the WhatsApp URL with prefilled text
-  const message = "Hi Trends Management, I would like to inquire about your event planning services!";
+  const message = "Hi Trends Management, I would like to inquire about your event planning Segments!";
   const whatsappUrl = `https://wa.me/${companyInfo.phone}?text=${encodeURIComponent(message)}`;
 
   return (

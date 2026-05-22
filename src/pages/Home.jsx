@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles, Star, ChevronLeft, ChevronRight, MapPin, Quote } from 'lucide-react';
 import { companyInfo } from '../data/companyInfo';
-import { servicesData } from '../data/servicesData';
+import { SegmentsData } from '../data/SegmentsData';
 import { portfolioData } from '../data/portfolioData';
 import { feedbackData } from '../data/feedbackData';
 import DestinationWeddingSection from '../components/DestinationWeddingSection';
-import ServiceCard from '../components/ServiceCard';
+import SegmentCard from '../components/SegmentCard';
 import PortfolioItem from '../components/PortfolioItem';
 import EnquiryModal from '../components/EnquiryModal';
 import PartnerSlider from '../components/PartnerSlider';
@@ -94,9 +94,9 @@ const Home = () => {
     }
   };
 
-  // Select 4 service previews (Wedding, Destination, Corporate, Birthday)
-  const previewServicesIds = [1, 2, 3, 4];
-  const previewServices = servicesData.filter(s => previewServicesIds.includes(s.id));
+  // Select 4 Segment previews (Wedding, Destination, Corporate, Birthday)
+  const previewSegmentsIds = [1, 2, 3, 4];
+  const previewSegments = SegmentsData.filter(s => previewSegmentsIds.includes(s.id));
 
   // Select 3 portfolio previews
   const previewPortfolio = portfolioData.slice(0, 3);
@@ -130,7 +130,7 @@ const Home = () => {
             </motion.div>
           </AnimatePresence>
           {/* Subtle Ambient Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#f5f5f3]/90 via-transparent to-[#fbfbfa] z-0 pointer-events-none" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#f5f5f3]/90 via-transparent to-[#fbfbfa] z-0 pointer-events-none" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
@@ -248,7 +248,7 @@ const Home = () => {
                   alt="Nikhil Karadbhajne" 
                   className="w-full h-auto aspect-3/4 object-cover object-top group-hover:scale-103 transition-transform duration-700"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-stone-950/80 to-transparent p-6 text-white pt-24">
+                <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-stone-950/80 to-transparent p-6 text-white pt-24">
                   <h3 className="text-xl font-playfair font-normal text-white">Nikhil Karadbhajne</h3>
                   <p className="text-[10px] font-bold text-festival-orange uppercase tracking-widest mt-1">Founder & Chief Event Curator</p>
                 </div>
@@ -264,13 +264,13 @@ const Home = () => {
             >
               <span className="text-festival-orange font-bold text-xs uppercase tracking-widest block">Meet The Visionary</span>
               <h2 className="text-3xl md:text-5xl font-playfair font-normal text-stone-900 leading-tight">
-                Crafting <span className="text-festival-orange font-semibold italic">Unforgettable Memories</span> Since 2012
+                Crafting <span className="text-festival-orange font-semibold italic">Unforgettable Memories</span> Since 2014
               </h2>
               <p className="text-stone-600 text-sm md:text-base leading-relaxed font-light font-sans">
-                With over 12 years of experience in Nagpur's event industry, Nikhil started Trends Management with a singular vision: to create unforgettable, legendary experiences that transcend the ordinary.
+                Starting as a trusted manpower partner for event organizations, Nikhil spent years contributing to successful events behind the scenes, gaining invaluable industry expertise and understanding the art of flawless execution. This journey laid the foundation for Trends Management.
               </p>
               <p className="text-stone-600 text-sm md:text-base leading-relaxed font-light font-sans">
-                Having personally curated 300+ weddings and corporate affairs, his meticulous attention to detail and unwavering commitment to excellence has positioned Trends Management as the premier event architecture firm in Central India.
+                Today, Trends Management stands as an independent event agency crafting luxury weddings and distinguished corporate experiences driven by meticulous planning, creative excellence, and a commitment to creating unforgettable memories.
               </p>
               <div className="pt-6">
                 <img src={`${import.meta.env.BASE_URL}tm logo.png`} alt="Trends Management" className="h-12 object-contain" />
@@ -280,7 +280,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* SERVICES PREVIEW */}
+      {/* Segments PREVIEW */}
       <section className="py-24 bg-[#fbfbfa] relative border-t border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           
@@ -303,18 +303,18 @@ const Home = () => {
             viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16"
           >
-            {previewServices.map((service, idx) => (
-              <ServiceCard key={service.id} service={service} index={idx} />
+            {previewSegments.map((Segment, idx) => (
+              <SegmentCard key={Segment.id} Segment={Segment} index={idx} />
             ))}
           </motion.div>
 
           {/* Callout Link */}
           <div className="text-center">
             <Link
-              to="/services"
+              to="/Segments"
               className="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] border border-stone-900 rounded-full px-8 py-3.5 text-stone-900 hover:bg-stone-900 hover:text-white transition-all duration-300"
             >
-              Browse All Services
+              Browse All Segments
               <ArrowRight size={13} />
             </Link>
           </div>

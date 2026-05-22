@@ -91,7 +91,7 @@ export const portfolioData = [
     category: "Corporate",
     location: "Nagpur, India",
     image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=800&h=600",
-    description: "A premium medical seminar featuring hybrid streaming integration, pristine acoustics, and flawless catering services.",
+    description: "A premium medical seminar featuring hybrid streaming integration, pristine acoustics, and flawless catering Segments.",
     date: "August 2025"
   },
   {

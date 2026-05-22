@@ -25,8 +25,8 @@ const About = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 25 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] }
     }
@@ -36,11 +36,11 @@ const About = () => {
     {
       icon: Award,
       title: "Decade of Operational Excellence",
-      description: "Over 10 years of successful event curations in Nagpur and beyond, handling grand budgets and high stakes with utmost precision."
+      description: "Over 12 years of successful event curations in Nagpur and beyond, handling grand budgets and high stakes with utmost precision."
     },
     {
       icon: Compass,
-      title: "End-to-End Logistics Mastery",
+      title: "End-to-End Hospitality Mastery",
       description: "Complete vendor management, licensing, crowd control, and hospitality systems. We take full stress off your shoulders."
     },
     {
@@ -71,9 +71,8 @@ const About = () => {
           <h1 className="text-3xl md:text-6xl font-playfair font-normal leading-tight text-stone-900 mb-6">
             The Story Behind <span className="text-festival-orange font-semibold italic">Trends Management</span>
           </h1>
-          <p className="text-stone-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-light font-sans">
-            Starting as a small boutique planning group in Sadar, Nagpur in 2014, we have evolved into Central India's premier event management company, specializing in luxury weddings and elite corporate affairs.
-          </p>
+          <p className="text-stone-500 text-sm md:text-base max-w-3xl mx-auto leading-relaxed font-light font-sans">
+            We started by helping event companies bring their visions to life through trusted manpower solutions. <br /> Today, Trends Management leads with its own signature experiences, turning weddings and corporate events into memorable celebrations.</p>
         </div>
       </section>
 
@@ -81,10 +80,10 @@ const About = () => {
       <section className="py-24 bg-white relative border-b border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Owner Photo */}
             <div className="lg:col-span-5 flex justify-center">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -92,10 +91,10 @@ const About = () => {
                 className="relative p-1 rounded-2xl border border-stone-200 bg-white max-w-sm w-full shadow-xs"
               >
                 <div className="rounded-xl overflow-hidden aspect-4/5 bg-stone-50">
-                  <img 
-                    src={owner.image.startsWith('http') ? owner.image : `${import.meta.env.BASE_URL}${owner.image}`} 
-                    alt={owner.name} 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
+                  <img
+                    src={owner.image.startsWith('http') ? owner.image : `${import.meta.env.BASE_URL}${owner.image}`}
+                    alt={owner.name}
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
               </motion.div>
@@ -120,25 +119,25 @@ const About = () => {
                 {owner.bio}
               </p>
               <p className="text-stone-500 text-sm md:text-base leading-relaxed mb-8 font-light font-sans">
-                Trends Management was founded in Nagpur with a single, clear objective: to challenge standard event setups by introducing custom, structural spatial concepts and luxury logistics. Under Nikhil's guidance, our team has curated milestones at prestigious venues across India and internationally.
+                From supporting events behind the scenes to creating unforgettable celebrations under our own name, the journey has grown with 120+ professionals. After planning our first wedding in 2022, Trends Management expanded rapidly and continues to make dream events a reality.
               </p>
 
               {/* Social icons */}
               <div className="flex items-center gap-4">
                 <span className="text-stone-400 text-[10px] uppercase tracking-widest font-bold">Connect:</span>
-                <a 
-                  href={owner.socials.linkedin} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={owner.socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-2.5 rounded-full bg-stone-50 border border-stone-200 text-stone-700 hover:text-stone-950 transition-all duration-300"
                   aria-label="Owner LinkedIn"
                 >
                   <Linkedin size={15} />
                 </a>
-                <a 
-                  href={owner.socials.instagram} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={owner.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-2.5 rounded-full bg-stone-50 border border-stone-200 text-stone-700 hover:text-stone-950 transition-all duration-300"
                   aria-label="Owner Instagram"
                 >
@@ -154,7 +153,7 @@ const About = () => {
       {/* WHY CHOOSE US & MISSION VALUES */}
       <section className="py-24 bg-[#f5f5f3] border-b border-stone-200/60 relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-festival-orange font-bold text-xs uppercase tracking-widest block mb-3">Our Core Differentiators</span>
             <h2 className="text-3xl md:text-5xl font-playfair font-normal text-stone-900">
@@ -166,7 +165,7 @@ const About = () => {
           </div>
 
           {/* Core Grid */}
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -203,10 +202,10 @@ const About = () => {
       {/* THE ARCHITECTS SECTION */}
       <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-festival-orange font-bold text-xs uppercase tracking-widest block mb-3">Our Curators</span>
-            <h2 className="text-3xl md:text-5xl font-playfair font-normal text-[#1a1917]">
+            <h2 className="text-3xl md:text-5xl font-playfair font-normal text-deep-teal">
               Meet Our Elite <span className="text-festival-orange font-semibold italic">Event Curators</span>
             </h2>
             <p className="mt-4 text-stone-600 text-sm md:text-base font-light leading-relaxed font-sans">
@@ -221,7 +220,7 @@ const About = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
           >
-            {teamData.map((member) => (
+            {teamData.filter(member => !member.isFounder).map((member) => (
               <TeamCard key={member.id} member={member} />
             ))}
           </motion.div>

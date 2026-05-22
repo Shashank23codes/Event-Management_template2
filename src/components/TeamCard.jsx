@@ -29,7 +29,7 @@ const TeamCard = ({ member }) => {
           className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105" 
         />
         {/* Deep Gradient Overlay */}
-        <div className="absolute inset-0 transition-opacity duration-500 bg-gradient-to-t from-stone-950 via-stone-950/60 to-transparent group-hover:via-stone-950/70" />
+        <div className="absolute inset-0 transition-opacity duration-500 bg-linear-to-t from-stone-950 via-stone-950/60 to-transparent group-hover:via-stone-950/70" />
       </div>
 
       {/* Founder Badge */}

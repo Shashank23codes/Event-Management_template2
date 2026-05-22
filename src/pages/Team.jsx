@@ -75,11 +75,11 @@ const Team = () => {
                 alt={founder.name} 
                 className="w-full h-full object-cover object-top group-hover:scale-102 transition-transform duration-700 grayscale hover:grayscale-0"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/20 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-stone-950/20 to-transparent pointer-events-none" />
             </div>
 
             {/* Founder details */}
-            <div className="flex-grow flex flex-col justify-center">
+            <div className="grow flex flex-col justify-center">
               <div className="flex items-center justify-center md:justify-start gap-2 text-festival-orange font-bold text-[10px] uppercase tracking-widest mb-2">
                 <Sparkles size={12} className="fill-festival-orange/20" />
                 Trends Management
@@ -166,11 +166,11 @@ const Team = () => {
                     alt={member.name} 
                     className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700 grayscale group-hover:grayscale-0"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent pointer-events-none" />
                 </div>
 
                 {/* Details */}
-                <div className="p-5 flex-grow flex flex-col justify-between">
+                <div className="p-5 grow flex flex-col justify-between">
                   <div>
                     <h3 className="text-lg font-playfair font-normal text-stone-900 leading-tight">
                       {member.name}

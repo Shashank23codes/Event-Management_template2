@@ -1,4 +1,4 @@
-export const servicesData = [
+export const SegmentsData = [
   {
     id: 1,
     icon: "Heart",

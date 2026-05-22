@@ -1,16 +1,16 @@
 import { motion as motionFramer } from 'framer-motion';
 import { ArrowRight, HelpCircle, PhoneCall } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { servicesData } from '../data/servicesData';
-import ServiceCard from '../components/ServiceCard';
+import { SegmentsData } from '../data/SegmentsData';
+import SegmentCard from '../components/SegmentCard';
 import { companyInfo } from '../data/companyInfo';
 import { useSEO } from '../hooks/useSEO';
 
-const Services = () => {
+const Segments = () => {
   useSEO({
-    title: 'Luxury Event & Wedding Planning Services | Trends Management',
-    description: 'Explore the luxury planning services offered by Trends Management. We curate bespoke wedding themes, destination events, and grand corporate galas in Nagpur.',
-    keywords: 'Destination Wedding Service, Corporate Event Coordination, Wedding Planners Nagpur, Luxury Party Planners'
+    title: 'Luxury Event & Wedding Planning Segments | Trends Management',
+    description: 'Explore the luxury planning Segments offered by Trends Management. We curate bespoke wedding themes, destination events, and grand corporate galas in Nagpur.',
+    keywords: 'Destination Wedding Segment, Corporate Event Coordination, Wedding Planners Nagpur, Luxury Party Planners'
   });
 
   const containerVariants = {
@@ -63,7 +63,7 @@ const Services = () => {
         </motionFramer.div>
       </section>
 
-      {/* 7 SERVICES GRID */}
+      {/* 7 Segments GRID */}
       <section className="py-20 bg-[#fbfbfa] relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           
@@ -73,8 +73,8 @@ const Services = () => {
             animate="visible"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
           >
-            {servicesData.map((service) => (
-              <ServiceCard key={service.id} service={service} />
+            {SegmentsData.map((Segment) => (
+              <SegmentCard key={Segment.id} Segment={Segment} />
             ))}
           </motionFramer.div>
 
@@ -121,4 +121,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Segments;

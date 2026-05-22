@@ -80,7 +80,7 @@ const VideoReelGrid = () => {
           <div className="lg:col-span-7 flex flex-col">
             <div 
               onClick={() => setActiveVideoId(mainVideo.id)}
-              className="group relative flex-grow min-h-[300px] md:min-h-[420px] rounded-3xl overflow-hidden shadow-xl border border-stone-200 cursor-pointer"
+              className="group relative grow min-h-[300px] md:min-h-[420px] rounded-3xl overflow-hidden shadow-xl border border-stone-200 cursor-pointer"
             >
               {/* Overlay shading */}
               <div className="absolute inset-0 bg-linear-to-t from-black via-black/30 to-transparent opacity-60 group-hover:opacity-75 transition-opacity duration-300 z-10" />

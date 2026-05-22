@@ -42,14 +42,14 @@ The application is styled with a premium, editorial luxury light theme:
 │   ├── data/                # Centralized state arrays
 │   │   ├── companyInfo.js   # Main contact coordinates (Nikhil Karadbhajne)
 │   │   ├── portfolioData.js # Successful Curations database
-│   │   ├── servicesData.js  # Services catalog (price-free)
+│   │   ├── SegmentsData.js  # Segments catalog (price-free)
 │   │   └── teamData.js      # List of all 11 curators
 │   │
 │   ├── pages/               # Routed pages
 │   │   ├── Home.jsx         # Hero showcase & statistics
 │   │   ├── About.jsx        # History & Spotlight
 │   │   ├── Projects.jsx     # Gallery portfolio & sector filtering
-│   │   ├── Services.jsx     # Core capabilities & detailed listings
+│   │   ├── Segments.jsx     # Core capabilities & detailed listings
 │   │   ├── Team.jsx         # Full creative staff showcase
 │   │   ├── Feedback.jsx     # Client reviews & testimonials
 │   │   └── Contact.jsx      # Enquiry form & maps
@@ -98,7 +98,7 @@ The application is styled with a premium, editorial luxury light theme:
 
 ## ✒️ Development Guidelines
 
-- **Pricing Display**: As a luxury brand, **do not display pricing rates directly** on services cards or previews. Direct clients to the Enquiry modal or Contact page.
+- **Pricing Display**: As a luxury brand, **do not display pricing rates directly** on Segments cards or previews. Direct clients to the Enquiry modal or Contact page.
 - **Color Variables**: Use semantic Tailwind color utility tokens defined in `index.css`:
   - `text-festival-orange` / `bg-festival-orange` for gold details.
   - `bg-light-gray` for page backgrounds.

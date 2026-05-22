@@ -46,23 +46,23 @@ const Footer = () => {
         {/* Middle Section: Links Columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16 border-t border-stone-200 pt-16">
           
-          {/* Services Column */}
+          {/* Segments Column */}
           <div className="flex flex-col">
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-stone-400 mb-6 font-sans">
-              Services
+              Segments
             </h4>
             <ul className="flex flex-col gap-4 text-sm font-light text-stone-600">
               <li>
-                <Link to="/services" className="hover:text-stone-900 hover:underline transition-all">Destination Weddings</Link>
+                <Link to="/Segments" className="hover:text-stone-900 hover:underline transition-all">Destination Weddings</Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-stone-900 hover:underline transition-all">Heritage & Royal Weddings</Link>
+                <Link to="/Segments" className="hover:text-stone-900 hover:underline transition-all">Heritage & Royal Weddings</Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-stone-900 hover:underline transition-all">Corporate Galas & Summits</Link>
+                <Link to="/Segments" className="hover:text-stone-900 hover:underline transition-all">Corporate Galas & Summits</Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-stone-900 hover:underline transition-all">Private Luxury Celebrations</Link>
+                <Link to="/Segments" className="hover:text-stone-900 hover:underline transition-all">Private Luxury Celebrations</Link>
               </li>
             </ul>
           </div>
@@ -164,8 +164,6 @@ const Footer = () => {
             <span>© {currentYear} Trends Management. All rights reserved.</span>
             <span className="hidden sm:inline text-stone-300">|</span>
             <span>Established in {companyInfo.established}</span>
-            <span className="hidden sm:inline text-stone-300">|</span>
-            <span className="uppercase font-medium">GSTIN: {companyInfo.gst}</span>
           </div>
           <div className="flex items-center gap-6">
             <span className="hover:text-stone-900 hover:underline cursor-pointer transition-colors">Privacy</span>

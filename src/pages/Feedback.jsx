@@ -74,7 +74,7 @@ const Feedback = () => {
           </div>
 
           <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-full">
-            <ShieldCheck className="text-emerald-600 stroke-[2]" size={16} />
+            <ShieldCheck className="text-emerald-600 stroke-2" size={16} />
             <span className="text-emerald-800 font-bold text-[10px] uppercase tracking-wider">100% Verified Celebrations</span>
           </div>
         </div>

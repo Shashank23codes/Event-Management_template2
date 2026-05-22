@@ -38,7 +38,7 @@ const FeedbackCard = ({ feedback }) => {
           </div>
           {feedback.verified && (
             <span className="flex items-center gap-1 text-[9px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full uppercase tracking-widest font-sans">
-              <ShieldCheck size={10} className="stroke-[2]" />
+              <ShieldCheck size={10} className="stroke-2" />
               Verified Event
             </span>
           )}

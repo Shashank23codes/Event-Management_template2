@@ -6,7 +6,7 @@ const PartnerSlider = () => {
     { name: "TAJ HOTELS", type: "Elite Palace Venue" },
     { name: "JW MARRIOTT", type: "Luxury Retreats" },
     { name: "HYATT REGENCY", type: "Urban Banquets" },
-    { name: "RADISSON BLU", type: "Premium Services" },
+    { name: "RADISSON BLU", type: "Premium Segments" },
     { name: "LE MERIDIEN", type: "Heritage Resorts" },
     { name: "WEDMEGOOD", type: "Top Rated Vendor" },
     { name: "WEDDINGWIRE", type: "Gold Partner" },
@@ -19,8 +19,8 @@ const PartnerSlider = () => {
   return (
     <div className="w-full bg-stone-50 py-10 border-t border-b border-stone-200/80 overflow-hidden relative">
       {/* Visual gradients on sides to fade elements */}
-      <div className="absolute top-0 left-0 w-16 md:w-32 h-full bg-gradient-to-r from-stone-50 to-transparent z-10 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-stone-50 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 left-0 w-16 md:w-32 h-full bg-linear-to-r from-stone-50 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-16 md:w-32 h-full bg-linear-to-l from-stone-50 to-transparent z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 text-center mb-6">
         <span className="inline-flex items-center gap-1.5 text-mustard-gold font-bold text-[10px] md:text-xs uppercase tracking-widest bg-white border border-stone-200/80 px-3 py-1 rounded-full shadow-xs">

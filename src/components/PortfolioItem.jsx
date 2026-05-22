@@ -22,10 +22,10 @@ const PortfolioItem = ({ item, aspectRatio = "aspect-4/5" }) => {
         <img 
           src={item.image} 
           alt={item.title} 
-          className="w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105" 
+          className="w-full h-full object-cover transition-transform duration-2000 ease-out group-hover:scale-105" 
         />
         {/* Modern dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/45 to-transparent transition-all duration-500 group-hover:from-stone-950 group-hover:via-stone-950/60" />
+        <div className="absolute inset-0 bg-linear-to-t from-stone-950 via-stone-950/45 to-transparent transition-all duration-500 group-hover:from-stone-950 group-hover:via-stone-950/60" />
       </div>
 
       {/* Floating Info (Category + Date) */}
@@ -55,7 +55,7 @@ const PortfolioItem = ({ item, aspectRatio = "aspect-4/5" }) => {
         {/* Revealable Description & Contact Button */}
         <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-out opacity-0 group-hover:opacity-100">
           <div className="overflow-hidden">
-            <div className="w-10 h-[1px] bg-mustard-gold/40 my-3.5" />
+            <div className="w-10 h-px bg-mustard-gold/40 my-3.5" />
             <p className="text-white/70 text-xs md:text-sm font-light leading-relaxed mb-6 font-sans">
               {item.description}
             </p>
