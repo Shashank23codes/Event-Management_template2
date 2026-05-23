@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Award } from 'lucide-react';
-import { Linkedin, Instagram } from './SocialIcons';
+import { Instagram } from './SocialIcons';
 
 const TeamCard = ({ member }) => {
   const cardVariants = {
@@ -24,7 +24,7 @@ const TeamCard = ({ member }) => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src={member.image.startsWith('http') ? member.image : `${import.meta.env.BASE_URL}${member.image}`} 
+          src={member.image} 
           alt={member.name} 
           className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105" 
         />
@@ -69,17 +69,6 @@ const TeamCard = ({ member }) => {
 
             {/* Social Links */}
             <div className="flex items-center gap-3">
-              {member.socials.linkedin && (
-                <a 
-                  href={member.socials.linkedin} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="p-2 rounded-full bg-white/10 text-white/95 hover:bg-white hover:text-stone-900 border border-white/20 transition-all duration-300"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={14} />
-                </a>
-              )}
               {member.socials.instagram && (
                 <a 
                   href={member.socials.instagram} 

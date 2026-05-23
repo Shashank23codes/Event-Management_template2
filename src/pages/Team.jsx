@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Users2, ShieldCheck, HeartHandshake, Linkedin, Instagram, Quote, Sparkles } from 'lucide-react';
+import { Users2, ShieldCheck, HeartHandshake, Instagram, Quote, Sparkles } from 'lucide-react';
 import { teamData } from '../data/teamData';
 import { useSEO } from '../hooks/useSEO';
 
@@ -71,7 +71,7 @@ const Team = () => {
             {/* Image Container */}
             <div className="w-full md:w-80 h-96 rounded-2xl overflow-hidden shadow-xs border border-stone-200 shrink-0 relative group">
               <img 
-                src={founder.image.startsWith('http') ? founder.image : `${import.meta.env.BASE_URL}${founder.image}`} 
+                src={founder.image} 
                 alt={founder.name} 
                 className="w-full h-full object-cover object-top group-hover:scale-102 transition-transform duration-700 grayscale hover:grayscale-0"
               />
@@ -105,15 +105,6 @@ const Team = () => {
 
               {/* Founder Socials */}
               <div className="flex items-center justify-center md:justify-start gap-4 mt-8">
-                <a 
-                  href={founder.socials.linkedin} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="w-10 h-10 rounded-full bg-white text-stone-700 border border-stone-200 hover:text-stone-950 transition-all flex items-center justify-center shadow-xs duration-300"
-                  aria-label={`${founder.name} LinkedIn`}
-                >
-                  <Linkedin size={15} />
-                </a>
                 <a 
                   href={founder.socials.instagram} 
                   target="_blank" 
@@ -151,7 +142,7 @@ const Team = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
           >
             {members.map((member) => (
               <motion.div
@@ -162,7 +153,7 @@ const Team = () => {
                 {/* Image Wrap */}
                 <div className="aspect-3/4 overflow-hidden relative border-b border-stone-100 shrink-0">
                   <img 
-                    src={member.image.startsWith('http') ? member.image : `${import.meta.env.BASE_URL}${member.image}`} 
+                    src={member.image} 
                     alt={member.name} 
                     className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700 grayscale group-hover:grayscale-0"
                   />
@@ -185,15 +176,6 @@ const Team = () => {
 
                   {/* Member Socials */}
                   <div className="flex items-center gap-3 mt-5 pt-4 border-t border-stone-150/60">
-                    <a 
-                      href={member.socials.linkedin} 
-                      target="_blank" 
-                      rel="noreferrer"
-                      className="w-8 h-8 rounded-full bg-stone-50 text-stone-600 hover:text-stone-950 hover:bg-stone-100 transition-all flex items-center justify-center border border-stone-200/60 duration-300"
-                      aria-label={`${member.name} LinkedIn`}
-                    >
-                      <Linkedin size={13} />
-                    </a>
                     <a 
                       href={member.socials.instagram} 
                       target="_blank" 

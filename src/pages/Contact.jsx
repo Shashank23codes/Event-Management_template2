@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, ShieldCheck, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, ShieldCheck, Send, CheckCircle2, AlertCircle, Calendar } from 'lucide-react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { companyInfo } from '../data/companyInfo';
 import CustomSelect from '../components/CustomSelect';
 import { useSEO } from '../hooks/useSEO';
@@ -22,7 +24,7 @@ const Contact = () => {
     phone: '',
     eventType: 'Wedding',
     destination: '',
-    eventDate: '',
+    eventDate: null,
     message: ''
   });
 
@@ -56,6 +58,10 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, eventType: e.target.value }));
   };
 
+  const handleDateChange = (date) => {
+    setFormData(prev => ({ ...prev, eventDate: date }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -74,6 +80,7 @@ const Contact = () => {
     // Web3Forms payload
     const submissionData = {
       ...formData,
+      eventDate: formData.eventDate ? formData.eventDate.toLocaleDateString() : 'Not Specified',
       // IMPORTANT: Get your access key from https://web3forms.com/ using shashankgupta4068@gmail.com
       access_key: "faf3502b-e8c4-42b8-9a63-15e8531aa738",
       subject: `New Event Inquiry from ${formData.fullName}`
@@ -102,7 +109,7 @@ const Contact = () => {
           phone: '',
           eventType: 'Wedding',
           destination: '',
-          eventDate: '',
+          eventDate: null,
           message: ''
         });
         
@@ -156,7 +163,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* LEFT COLUMN: Lead Form */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-8">
               <div className="bg-white rounded-3xl p-6 md:p-10 border border-stone-200/80 shadow-xs relative">
                 
                 <h2 className="text-xl md:text-3xl font-playfair font-normal text-stone-900 mb-2 tracking-tight">
@@ -292,14 +299,19 @@ const Contact = () => {
                     <label htmlFor="eventDate" className="text-[10px] font-bold text-stone-600 uppercase tracking-widest">
                       Proposed Event Date
                     </label>
-                    <input 
-                      type="date" 
-                      id="eventDate" 
-                      name="eventDate"
-                      value={formData.eventDate}
-                      onChange={handleChange}
-                      className="w-full bg-[#fbfbfa] border border-stone-200 focus:border-festival-orange/60 focus:bg-white rounded-xl px-4 py-3.5 text-stone-905 text-sm focus:outline-none transition-all cursor-pointer font-sans"
-                    />
+                    <div className="relative w-full">
+                      <DatePicker
+                        id="eventDate"
+                        selected={formData.eventDate}
+                        onChange={handleDateChange}
+                        dateFormat="MMMM d, yyyy"
+                        minDate={new Date()}
+                        placeholderText="Select your dream date"
+                        className="w-full bg-[#fbfbfa] border border-stone-200 focus:border-festival-orange/60 focus:bg-white rounded-xl px-4 py-3.5 text-stone-900 text-sm focus:outline-none transition-all cursor-pointer font-sans"
+                        wrapperClassName="w-full"
+                      />
+                      <Calendar className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none" size={16} />
+                    </div>
                   </div>
 
                   {/* Message Field */}
@@ -332,8 +344,8 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: Contact Info + Google Maps */}
-            <div className="lg:col-span-5 flex flex-col gap-8">
+            {/* RIGHT COLUMN: Contact Info */}
+            <div className="lg:col-span-4 flex flex-col gap-8 lg:sticky lg:top-28">
               
               {/* Company Info Box */}
               <div className="bg-white rounded-3xl p-6 md:p-8 border border-stone-200/80 shadow-xs flex flex-col gap-6">
@@ -391,19 +403,6 @@ const Contact = () => {
 
               </div>
 
-              {/* Google Maps Iframe */}
-              <div className="bg-white rounded-3xl overflow-hidden border border-stone-200/80 p-1.5 shadow-sm h-[260px]">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d14882.23469087532!2d79.0712497!3d21.1699997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0fa3af2bc7f%3A0x6b4457e51c8901eb!2sSadar%2C%20Nagpur%2C%20Maharashtra%20440001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0, borderRadius: '1.25rem' }} 
-                  allowFullScreen="" 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Google Maps Sadar Nagpur - Trends Management"
-                />
-              </div>
 
             </div>
 

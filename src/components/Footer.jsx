@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
-import { Facebook, Instagram, Linkedin } from './SocialIcons';
+import { Facebook, Instagram } from './SocialIcons';
 import { companyInfo } from '../data/companyInfo';
 import { motion } from 'framer-motion';
 
@@ -113,12 +113,12 @@ const Footer = () => {
                 <span>@trendsmanagement</span>
               </a>
               <a
-                href={companyInfo.socials.linkedin}
+                href={companyInfo.socials.ownerInstagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-200/80 shadow-xs text-xs text-stone-700 hover:text-stone-950 hover:border-stone-400 transition-all hover:-translate-y-0.5"
               >
-                <Linkedin size={14} className="text-sky-700 fill-sky-700 stroke-none" />
+                <Instagram size={14} className="text-pink-600" />
                 <span>Nikhil Karadbhajne</span>
               </a>
               <a
@@ -128,7 +128,7 @@ const Footer = () => {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-200/80 shadow-xs text-xs text-stone-700 hover:text-stone-950 hover:border-stone-400 transition-all hover:-translate-y-0.5"
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>+91 80100 72657</span>
+                <span>{companyInfo.phoneDisplay}</span>
               </a>
             </div>
             <div className="text-xs text-stone-500 font-light font-sans max-w-xs">
@@ -173,11 +173,13 @@ const Footer = () => {
 
       </div>
 
-      {/* Massive cut-off text layout graphic just like in the inspiration image */}
-      <div className="relative w-full overflow-hidden select-none pointer-events-none h-[120px] sm:h-[180px] md:h-[260px] lg:h-[300px] flex items-end justify-center">
-        <h1 className="text-[7.5rem] sm:text-[13rem] md:text-[19rem] lg:text-[23rem] font-bold font-playfair tracking-tighter text-stone-950 leading-[0.7] transform translate-y-[10%] opacity-95">
+      {/* Massive cut-off text layout graphic */}
+      <div className="relative w-full overflow-hidden select-none pointer-events-none h-[150px] sm:h-[180px] md:h-[260px] lg:h-[300px] flex items-end justify-center">
+        <h1 className="text-[7.5rem] sm:text-[13rem] md:text-[19rem] lg:text-[23rem] font-bold font-playfair tracking-tighter leading-[0.9] transform translate-y-[10%] bg-linear-to-r from-stone-800 via-[#b89047] to-stone-800 text-transparent bg-clip-text animate-text-gradient">
           TRENDS
         </h1>
+        {/* Bottom Half Blur & Fade Overlay */}
+        {/* <div className="absolute bottom-0 left-0 w-full h-[50%] bg-linear-to-t from-[#f5f5f3] via-[#f5f5f3]/40 to-transparent backdrop-blur-[3px]" /> */}
       </div>
     </footer>
   );

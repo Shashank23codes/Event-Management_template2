@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles, Star, ChevronLeft, ChevronRight, MapPin, Quote } from 'lucide-react';
+import ownerImg from '../assets/teams-img/owner.jpeg';
 import { companyInfo } from '../data/companyInfo';
 import { SegmentsData } from '../data/SegmentsData';
 import { portfolioData } from '../data/portfolioData';
@@ -244,7 +245,7 @@ const Home = () => {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-md border border-stone-200/60 group max-w-md mx-auto lg:mx-0">
                 <img 
-                  src={`${import.meta.env.BASE_URL}teams-img/owner.jpeg`} 
+                  src={ownerImg} 
                   alt="Nikhil Karadbhajne" 
                   className="w-full h-auto aspect-3/4 object-cover object-top group-hover:scale-103 transition-transform duration-700"
                 />

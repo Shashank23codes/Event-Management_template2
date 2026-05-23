@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ShieldCheck, Users, Compass, Award } from 'lucide-react';
-import { Linkedin, Instagram } from '../components/SocialIcons';
+import { Instagram } from '../components/SocialIcons';
 import { teamData } from '../data/teamData';
 import TeamCard from '../components/TeamCard';
 import { useSEO } from '../hooks/useSEO';
@@ -88,11 +88,11 @@ const About = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
-                className="relative p-1 rounded-2xl border border-stone-200 bg-white max-w-sm w-full shadow-xs"
+                className="relative rounded-2xl border border-stone-200 bg-white max-w-sm w-full shadow-xs"
               >
-                <div className="rounded-xl overflow-hidden aspect-4/5 bg-stone-50">
+                <div className="rounded-2xl overflow-hidden aspect-4/5 bg-stone-50">
                   <img
-                    src={owner.image.startsWith('http') ? owner.image : `${import.meta.env.BASE_URL}${owner.image}`}
+                    src={owner.image}
                     alt={owner.name}
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
@@ -125,15 +125,6 @@ const About = () => {
               {/* Social icons */}
               <div className="flex items-center gap-4">
                 <span className="text-stone-400 text-[10px] uppercase tracking-widest font-bold">Connect:</span>
-                <a
-                  href={owner.socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 rounded-full bg-stone-50 border border-stone-200 text-stone-700 hover:text-stone-950 transition-all duration-300"
-                  aria-label="Owner LinkedIn"
-                >
-                  <Linkedin size={15} />
-                </a>
                 <a
                   href={owner.socials.instagram}
                   target="_blank"
@@ -218,7 +209,7 @@ const About = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto"
           >
             {teamData.filter(member => !member.isFounder).map((member) => (
               <TeamCard key={member.id} member={member} />
