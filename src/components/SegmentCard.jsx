@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const SegmentCard = ({ Segment }) => {
+const SegmentCard = ({ Segment, className = '', isFullWidth = false }) => {
   // Dynamically resolve the icon from Lucide React
   const IconComponent = Icons[Segment.icon] || Icons.Sparkles;
 
@@ -26,12 +26,14 @@ const SegmentCard = ({ Segment }) => {
         Segment.badge 
           ? 'border-[#b89047]/40 shadow-xs' 
           : 'border-stone-200/80'
-      } group hover:border-festival-orange/40 hover:shadow-md`}
+      } group hover:border-festival-orange/40 hover:shadow-md ${className} ${
+        isFullWidth ? 'lg:flex-row lg:items-center lg:gap-8' : ''
+      }`}
     >
       {/* Subtle Glow Effect on Hover */}
       <div className="absolute -right-20 -top-20 w-40 h-40 rounded-full bg-festival-orange/3 blur-3xl group-hover:bg-festival-orange/5 transition-all duration-500 pointer-events-none" />
 
-      <div>
+      <div className={isFullWidth ? "lg:flex-1" : ""}>
         {/* Luxury Badge */}
         {Segment.badge && (
           <span className="absolute top-6 right-6 inline-flex items-center gap-1 rounded-full bg-[#fdfbf7] px-3.5 py-1 text-[8px] font-bold uppercase tracking-[0.2em] text-[#b89047] border border-[#b89047]/20 shadow-xs">
@@ -51,12 +53,12 @@ const SegmentCard = ({ Segment }) => {
         </div>
 
         {/* Description */}
-        <p className="text-stone-500 text-xs md:text-sm font-light leading-relaxed mb-6">
+        <p className={`text-stone-500 text-xs md:text-sm font-light leading-relaxed mb-6 ${isFullWidth ? 'lg:max-w-2xl' : ''}`}>
           {Segment.description}
         </p>
 
         {/* Detailed Points */}
-        <ul className="space-y-2.5 mb-8">
+        <ul className={`space-y-2.5 mb-8 ${isFullWidth ? 'lg:grid lg:grid-cols-2 lg:gap-x-4 lg:mb-0 lg:max-w-2xl' : ''}`}>
           {Segment.details.map((detail, idx) => (
             <li key={idx} className="flex items-center gap-2 text-xs text-stone-500 font-light">
               <span className="w-1.5 h-1.5 rounded-full bg-festival-orange/30" />
@@ -67,7 +69,9 @@ const SegmentCard = ({ Segment }) => {
       </div>
 
       {/* Action Button - Discuss Collaboration */}
-      <div className="pt-6 border-t border-stone-100 flex items-center justify-between gap-4 mt-auto">
+      <div className={`pt-6 border-t border-stone-100 flex items-center justify-between gap-4 mt-auto ${
+        isFullWidth ? 'lg:pt-0 lg:border-t-0 lg:border-l lg:border-stone-200/60 lg:pl-8 lg:mt-0 lg:w-1/4 lg:flex-shrink-0' : ''
+      }`}>
         <Link 
           to="/contact" 
           state={{ selectedEvent: Segment.title }}

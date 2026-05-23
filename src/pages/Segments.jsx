@@ -73,9 +73,17 @@ const Segments = () => {
             animate="visible"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
           >
-            {SegmentsData.map((Segment) => (
-              <SegmentCard key={Segment.id} Segment={Segment} />
-            ))}
+            {SegmentsData.map((Segment, index) => {
+              const isLast = index === SegmentsData.length - 1;
+              return (
+                <SegmentCard 
+                  key={Segment.id} 
+                  Segment={Segment} 
+                  isFullWidth={isLast}
+                  className={isLast ? "md:col-span-2 lg:col-span-3" : ""}
+                />
+              );
+            })}
           </motionFramer.div>
 
         </div>
