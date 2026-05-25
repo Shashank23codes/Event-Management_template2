@@ -70,7 +70,7 @@ const SegmentCard = ({ Segment, className = '', isFullWidth = false }) => {
 
       {/* Action Button - Discuss Collaboration */}
       <div className={`pt-6 border-t border-stone-100 flex items-center justify-between gap-4 mt-auto ${
-        isFullWidth ? 'lg:pt-0 lg:border-t-0 lg:border-l lg:border-stone-200/60 lg:pl-8 lg:mt-0 lg:w-1/4 lg:flex-shrink-0' : ''
+        isFullWidth ? 'lg:pt-0 lg:border-t-0 lg:border-l lg:border-stone-200/60 lg:pl-8 lg:mt-0 lg:w-1/4 lg:shrink-0' : ''
       }`}>
         <Link 
           to="/contact" 

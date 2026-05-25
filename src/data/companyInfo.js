@@ -2,7 +2,7 @@ export const companyInfo = {
   name: "Trends Management",
   tagline: "Event Planners & Destination Specialists",
   owner: "Nikhil Karadbhajne",
-  address: "123, Central Avenue, Sadar, Nagpur - 440001",
+  address: "Flat No.A-2, Hemraj Apartment, 598, Om Sai Nagar, Shivaji Nagar, Nagpur, Maharashtra 440010",
   phone: "917028447325",
   phoneDisplay: "+91 70284 47325",
   email: "trendmenagemet11@gmail.com",

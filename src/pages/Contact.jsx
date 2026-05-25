@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, ShieldCheck, Send, CheckCircle2, AlertCircle, Calendar } from 'lucide-react';
+import { Mail, Phone, MapPin, ShieldCheck, Send, CheckCircle2, AlertCircle, Calendar } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { companyInfo } from '../data/companyInfo';
@@ -389,20 +389,36 @@ const Contact = () => {
                     </div>
                   </a>
 
-                  {/* Business Hours */}
-                  <div className="flex items-start gap-3">
-                    <Clock size={18} className="text-festival-orange mt-0.5 shrink-0" />
-                    <div>
-                      <span className="text-stone-400 text-[10px] block uppercase tracking-widest font-bold">Office Hours</span>
-                      <span className="text-stone-800 font-semibold">{companyInfo.hours}</span>
-                    </div>
-                  </div>
-
-
                 </div>
 
               </div>
 
+              {/* Google Live Location Map */}
+              <div className="bg-white rounded-3xl p-4 border border-stone-200/80 shadow-xs flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-stone-500">Live Location Map</h4>
+                  <a 
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(companyInfo.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] font-bold text-festival-orange uppercase tracking-wider hover:underline flex items-center gap-1"
+                  >
+                    Open in Maps ↗
+                  </a>
+                </div>
+                <div className="relative w-full h-[220px] rounded-2xl overflow-hidden border border-stone-100 shadow-inner">
+                  <iframe 
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(companyInfo.address)}&t=&z=16&ie=UTF8&iwloc=&output=embed`} 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Google Live Location Map"
+                  />
+                </div>
+              </div>
 
             </div>
 

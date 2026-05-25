@@ -165,10 +165,6 @@ const Footer = () => {
             <span className="hidden sm:inline text-stone-300">|</span>
             <span>Established in {companyInfo.established}</span>
           </div>
-          <div className="flex items-center gap-6">
-            <span className="hover:text-stone-900 hover:underline cursor-pointer transition-colors">Privacy</span>
-            <span className="hover:text-stone-900 hover:underline cursor-pointer transition-colors">Terms of Use</span>
-          </div>
         </div>
 
       </div>

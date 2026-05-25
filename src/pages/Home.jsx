@@ -5,14 +5,10 @@ import { ArrowRight, Sparkles, Star, ChevronLeft, ChevronRight, MapPin, Quote } 
 import ownerImg from '../assets/teams-img/owner.jpeg';
 import { companyInfo } from '../data/companyInfo';
 import { SegmentsData } from '../data/SegmentsData';
-import { portfolioData } from '../data/portfolioData';
 import { feedbackData } from '../data/feedbackData';
 import DestinationWeddingSection from '../components/DestinationWeddingSection';
 import SegmentCard from '../components/SegmentCard';
-import PortfolioItem from '../components/PortfolioItem';
-import EnquiryModal from '../components/EnquiryModal';
 import PartnerSlider from '../components/PartnerSlider';
-import VideoReelGrid from '../components/VideoReelGrid';
 import { useSEO } from '../hooks/useSEO';
 
 const Home = () => {
@@ -49,14 +45,7 @@ const Home = () => {
   // Hero carousel index state
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
   
-  // Enquiry Modal triggers
-  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
-  const [modalEventType, setModalEventType] = useState('Wedding');
 
-  const openEnquiry = (type = 'Wedding') => {
-    setModalEventType(type);
-    setIsEnquiryOpen(true);
-  };
 
   // Auto-scroll hero slideshow every 6.5 seconds
   useEffect(() => {
@@ -99,8 +88,7 @@ const Home = () => {
   const previewSegmentsIds = [1, 2, 3, 4];
   const previewSegments = SegmentsData.filter(s => previewSegmentsIds.includes(s.id));
 
-  // Select 3 portfolio previews
-  const previewPortfolio = portfolioData.slice(0, 3);
+
 
   return (
     <motion.div
@@ -190,13 +178,13 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.45 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
           >
-            <button
-              onClick={() => openEnquiry('Wedding')}
+            <Link
+              to="/contact"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-stone-900 text-white rounded-full px-9 py-4.5 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-stone-850 hover:scale-102 transition-all cursor-pointer shadow-xs"
             >
               Get a Free Quote
               <ArrowRight size={14} />
-            </button>
+            </Link>
             <Link
               to="/projects"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-stone-900 rounded-full px-9 py-4.5 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-900 hover:bg-stone-900 hover:text-white transition-all duration-300"
@@ -325,51 +313,6 @@ const Home = () => {
       {/* DESTINATION WEDDINGS HIGHLIGHT */}
       <DestinationWeddingSection />
 
-      {/* PORTFOLIO/PROJECTS PREVIEW */}
-      <section className="py-24 bg-white relative border-t border-stone-200/60">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-          
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16">
-            <div className="max-w-2xl">
-              <span className="text-festival-orange font-bold text-xs uppercase tracking-widest block mb-3">Recent Masterpieces</span>
-              <h2 className="text-3xl md:text-5xl font-playfair font-normal text-stone-900">
-                Curations of <span className="text-festival-orange font-semibold italic">Pure Magic</span>
-              </h2>
-              <p className="mt-3 text-stone-600 text-sm md:text-base font-light">
-                Explore a visual snapshot of recent weddings, high-end corporate retreats, and private birthday blowouts managed by Trends Management.
-              </p>
-            </div>
-            <div>
-              <Link
-                to="/projects"
-                className="inline-flex items-center justify-center gap-2 border border-stone-900 rounded-full px-6 py-3.5 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-900 hover:bg-stone-900 hover:text-white transition-all duration-300"
-              >
-                Explore Full Gallery
-                <ArrowRight size={13} />
-              </Link>
-            </div>
-          </div>
-
-          {/* Portfolio Grid */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
-          >
-            {previewPortfolio.map((item) => (
-              <PortfolioItem key={item.id} item={item} />
-            ))}
-          </motion.div>
- 
-        </div>
-      </section>
-
-      {/* VIDEO DIARIES SHOWCASE */}
-      <VideoReelGrid />
-
       {/* FEEDBACK CAROUSEL (3 Testimonials) */}
       <section className="py-24 bg-[#fbfbfa] border-t border-stone-200/60 relative">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
@@ -470,12 +413,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* QUICK ENQUIRY SLIDE OVERLAY */}
-      <EnquiryModal 
-        isOpen={isEnquiryOpen} 
-        onClose={() => setIsEnquiryOpen(false)} 
-        initialEventType={modalEventType} 
-      />
+
 
     </motion.div>
   );
