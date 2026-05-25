@@ -5,24 +5,24 @@ import { Link } from 'react-router-dom';
 const DestinationWeddingSection = () => {
   const destinations = [
     {
-      city: "Udaipur",
-      theme: "Royal Palace",
-      image: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&q=80&w=400&h=500"
+      city: "Eden Greenz",
+      theme: "Luxury Lawns & Banquets",
+      image: "https://images.unsplash.com/photo-1519225495810-7512c696505a?auto=format&fit=crop&q=80&w=400&h=500"
     },
     {
-      city: "Goa",
-      theme: "Sandy Beachfront",
-      image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=400&h=500"
+      city: "Chattarpur Farms",
+      theme: "Grand Estates & Gardens",
+      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=400&h=500"
     },
     {
-      city: "Jaipur",
-      theme: "Heritage Forts",
+      city: "Chokar Dhani",
+      theme: "Ethnic Resort & Heritage",
       image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=400&h=500"
     },
     {
-      city: "International",
-      theme: "Dubai & Thailand",
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=400&h=500"
+      city: "Pench Wilderness",
+      theme: "Scenic Forest Weddings",
+      image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&q=80&w=400&h=500"
     }
   ];
 
@@ -58,13 +58,13 @@ const DestinationWeddingSection = () => {
           <div className="lg:col-span-8">
             <span className="flex items-center gap-2 text-mustard-gold font-semibold text-xs md:text-sm uppercase tracking-widest mb-3">
               <Plane className="animate-bounce" size={16} />
-              Exotic Global Celebrations
+              Premium Local Celebrations
             </span>
             <h2 className="text-3xl md:text-5xl font-playfair font-normal leading-tight text-deep-teal">
               Plan Your Dream <span className="text-mustard-gold italic font-bold">Destination Wedding</span>
             </h2>
             <p className="mt-4 text-stone-600 text-sm md:text-base max-w-2xl leading-relaxed">
-              We specialize in turning travel into timeless romance. From palace courtyard setups in Udaipur to beachside sangeets in Goa and luxury events in Thailand and Dubai, we handle guest itineraries, local licenses, and stellar setups seamlessly.
+              We specialize in turning local landscapes into timeless romance. From grand lawn celebrations at Eden Greenz and estate setups at Chattarpur Farms to ethnic sangeets at Chokar Dhani and scenic wilderness retreats in Pench, we manage local logistics, vendor networks, and stellar setups seamlessly across Nagpur and its nearby areas.
             </p>
           </div>
           <div className="lg:col-span-4 flex lg:justify-end">
