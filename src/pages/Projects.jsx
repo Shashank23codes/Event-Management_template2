@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SlidersHorizontal, Image } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import PortfolioItem from '../components/PortfolioItem';
+import InstagramModal from '../components/InstagramModal';
 import { useSEO } from '../hooks/useSEO';
 
 const Projects = () => {
@@ -13,53 +14,38 @@ const Projects = () => {
   });
 
   const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedInstagramProject, setSelectedInstagramProject] = useState(null);
 
-  const categories = ["All", "Destination Wedding", "Wedding", "Corporate", "Social"];
+  const categories = ["All", ...new Set(portfolioData.map(item => item.category))];
 
-  // Filter items based on selected category
+  // Parses Month Year strings (e.g. "July 2025") for chronological sorting
+  const parseDate = (dateStr) => {
+    if (!dateStr) return new Date(0);
+    const [month, year] = dateStr.split(" ");
+    const months = {
+      January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
+      July: 6, August: 7, September: 8, October: 9, November: 10, December: 11
+    };
+    return new Date(parseInt(year, 10), months[month] || 0);
+  };
+
+  // Filter and sort items chronologically (newest first)
   const filteredItems = activeCategory === "All"
     ? portfolioData
     : portfolioData.filter(item => item.category === activeCategory);
 
-  // Computes premium asymmetrical layout parameters for card grids (HBA-inspired design)
-  const getCardLayout = (index) => {
+  const sortedItems = [...filteredItems].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
+  // Generates bento grid spans based on index
+  const getBentoLayout = (index) => {
     const patternIndex = index % 6;
     switch (patternIndex) {
-      case 0: // Landscape Wide Highlight (Spans 8 cols on desktop)
-        return {
-          colSpan: "md:col-span-8",
-          aspectRatio: "aspect-16/10"
-        };
-      case 1: // Slim Portrait Highlight (Spans 4 cols on desktop)
-        return {
-          colSpan: "md:col-span-4",
-          aspectRatio: "aspect-[3/4]"
-        };
-      case 2: // Slim Portrait (Spans 4 cols on desktop)
-        return {
-          colSpan: "md:col-span-4",
-          aspectRatio: "aspect-[3/4]"
-        };
-      case 3: // Square Medium (Spans 4 cols on desktop)
-        return {
-          colSpan: "md:col-span-4",
-          aspectRatio: "aspect-square"
-        };
-      case 4: // Square Medium (Spans 4 cols on desktop)
-        return {
-          colSpan: "md:col-span-4",
-          aspectRatio: "aspect-square"
-        };
-      case 5: // Full Width Dramatic Banner (Spans 12 cols on desktop)
-        return {
-          colSpan: "md:col-span-12",
-          aspectRatio: "aspect-[21/9] md:h-[480px] aspect-video"
-        };
+      case 0:
+        return "md:col-span-3 md:row-span-2";
+      case 5:
+        return "md:col-span-2 md:row-span-2";
       default:
-        return {
-          colSpan: "md:col-span-4",
-          aspectRatio: "aspect-4/5"
-        };
+        return "md:col-span-1 md:row-span-2";
     }
   };
 
@@ -147,11 +133,11 @@ const Projects = () => {
             </div>
           </div>
 
-          {/* Asymmetrical Grid of Items */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
+          {/* Bento Grid of Items */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 auto-rows-[340px] md:auto-rows-[250px] lg:auto-rows-[280px]">
             <AnimatePresence mode="popLayout">
-              {filteredItems.map((item, index) => {
-                const layout = getCardLayout(index);
+              {sortedItems.map((item, index) => {
+                const bentoClass = getBentoLayout(index);
                 return (
                   <motion.div
                     layout
@@ -160,9 +146,13 @@ const Projects = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.4 }}
-                    className={`${layout.colSpan} w-full`}
+                    className={`${bentoClass} w-full h-full`}
                   >
-                    <PortfolioItem item={item} aspectRatio={layout.aspectRatio} />
+                    <PortfolioItem 
+                      item={item} 
+                      aspectRatio="h-full w-full" 
+                      onInstagramClick={setSelectedInstagramProject}
+                    />
                   </motion.div>
                 );
               })}
@@ -170,7 +160,7 @@ const Projects = () => {
           </div>
 
           {/* Empty fallback state */}
-          {filteredItems.length === 0 && (
+          {sortedItems.length === 0 && (
             <div className="text-center py-24 border border-stone-200/80 bg-white rounded-2xl max-w-xl mx-auto shadow-xs">
               <Image size={40} className="mx-auto text-stone-300 mb-6" />
               <h3 className="text-xl font-playfair font-normal text-stone-900 mb-2">No Projects Found</h3>
@@ -182,6 +172,14 @@ const Projects = () => {
 
         </div>
       </section>
+
+      {/* Live Instagram Modal Popup */}
+      <InstagramModal
+        isOpen={!!selectedInstagramProject}
+        onClose={() => setSelectedInstagramProject(null)}
+        instagramUrl={selectedInstagramProject?.instagramUrl}
+        projectTitle={selectedInstagramProject?.title}
+      />
 
     </motion.div>
   );
