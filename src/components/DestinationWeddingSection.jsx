@@ -1,18 +1,30 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Plane } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { portfolioData } from '../data/portfolioData';
-import InstagramModal from './InstagramModal';
-import { Instagram } from './SocialIcons';
 
 const DestinationWeddingSection = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  // Filter for Destination Wedding projects to display on the Home screen
-  const destinationProjects = portfolioData
-    .filter(item => item.category === "Destination Wedding")
-    .slice(0, 4);
+  const destinations = [
+    {
+      city: "Udaipur",
+      theme: "Royal Palace",
+      image: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&q=80&w=400&h=500"
+    },
+    {
+      city: "Goa",
+      theme: "Sandy Beachfront",
+      image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=400&h=500"
+    },
+    {
+      city: "Jaipur",
+      theme: "Heritage Forts",
+      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=400&h=500"
+    },
+    {
+      city: "International",
+      theme: "Dubai & Thailand",
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=400&h=500"
+    }
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -75,46 +87,31 @@ const DestinationWeddingSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16"
         >
-          {destinationProjects.map((item) => (
+          {destinations.map((dest, idx) => (
             <motion.div
-              key={item.id}
+              key={idx}
               variants={itemVariants}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              onClick={() => {
-                if (item.instagramUrl) {
-                  setSelectedProject(item);
-                }
-              }}
-              className="group relative h-[280px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl border border-stone-200/80 cursor-pointer"
+              className="group relative h-[280px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl border border-stone-200/80"
             >
               {/* Overlay linear */}
-              <div className="absolute inset-0 bg-linear-to-t from-stone-950 via-stone-950/40 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300 z-10" />
+              <div className="absolute inset-0 bg-linear-to-t from-stone-900 via-stone-900/40 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300 z-10" />
 
               {/* Destination Image */}
               <img 
-                src={item.image} 
-                alt={item.title} 
-                className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out" 
+                src={dest.image} 
+                alt={dest.city} 
+                className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-700 ease-out" 
               />
 
-              {/* Instagram Indicator Badge */}
-              {item.instagramUrl && (
-                <div className="absolute top-4 right-4 z-20 bg-pink-600/90 text-white rounded-full p-2 border border-white/10 shadow-sm opacity-95 group-hover:scale-110 transition-transform">
-                  <Instagram size={12} className="stroke-white" />
-                </div>
-              )}
-
               {/* Hover Text Reveal */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-20 transition-all duration-300">
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-20 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
                 <span className="text-[10px] md:text-xs text-gold-300 font-bold uppercase tracking-wider block mb-1">
-                  {item.location}
+                  {dest.theme}
                 </span>
-                <h3 className="text-lg md:text-2xl font-playfair text-white leading-tight font-normal italic group-hover:text-gold-300 transition-colors">
-                  {item.title}
+                <h3 className="text-xl md:text-3xl font-playfair text-white font-semibold">
+                  {dest.city}
                 </h3>
-                <p className="text-[9px] text-white/50 tracking-widest uppercase mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 font-sans">
-                  {item.date} • View Showcase
-                </p>
               </div>
             </motion.div>
           ))}
@@ -148,15 +145,6 @@ const DestinationWeddingSection = () => {
         </div>
 
       </div>
-
-      {/* Live Instagram Modal Overlay */}
-      <InstagramModal
-        isOpen={!!selectedProject}
-        onClose={() => setSelectedProject(null)}
-        instagramUrl={selectedProject?.instagramUrl}
-        projectTitle={selectedProject?.title}
-      />
-
     </section>
   );
 };

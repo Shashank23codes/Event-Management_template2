@@ -6,9 +6,12 @@ import ownerImg from '../assets/teams-img/owner.jpeg';
 import { companyInfo } from '../data/companyInfo';
 import { SegmentsData } from '../data/SegmentsData';
 import { feedbackData } from '../data/feedbackData';
+import { portfolioData } from '../data/portfolioData';
 import DestinationWeddingSection from '../components/DestinationWeddingSection';
 import SegmentCard from '../components/SegmentCard';
 import PartnerSlider from '../components/PartnerSlider';
+import PortfolioItem from '../components/PortfolioItem';
+import InstagramModal from '../components/InstagramModal';
 import { useSEO } from '../hooks/useSEO';
 
 const Home = () => {
@@ -44,6 +47,7 @@ const Home = () => {
 
   // Hero carousel index state
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+  const [selectedInstagramProject, setSelectedInstagramProject] = useState(null);
   
 
 
@@ -310,6 +314,60 @@ const Home = () => {
         </div>
       </section>
 
+      {/* RECENT MASTERPIECES SHOWCASE */}
+      <section className="py-24 bg-white border-t border-stone-200/60 relative">
+        {/* Glow detail */}
+        <div className="absolute top-1/2 left-1/4 w-[500px] h-[250px] bg-mustard-gold/5 blur-[90px] rounded-full pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <span className="text-festival-orange font-bold text-xs uppercase tracking-widest block mb-3">Portfolio Highlights</span>
+              <h2 className="text-3xl md:text-5xl font-playfair font-normal text-stone-900 leading-tight">
+                Our Recent <span className="text-festival-orange font-semibold italic">Masterpieces</span>
+              </h2>
+              <p className="mt-4 text-stone-600 text-sm md:text-base font-light leading-relaxed max-w-xl">
+                Explore a curation of our real wedding showcases and landmarks of celebrations. Click on any card to view the live Instagram feed of the event.
+              </p>
+            </div>
+            <div>
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] border border-stone-900 rounded-full px-8 py-3.5 text-stone-900 hover:bg-stone-900 hover:text-white transition-all duration-300"
+              >
+                View Full Gallery
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+          </div>
+
+          {/* Bento Style Grid for Home Page Showcase */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 auto-rows-[340px] md:auto-rows-[250px] lg:auto-rows-[280px]">
+            {portfolioData.slice(0, 6).map((item, index) => {
+              // Custom bento layout template for 6 items on home page
+              const bentoClass = index === 0 ? "md:col-span-2 md:row-span-2" : "md:col-span-1 md:row-span-1";
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
+                  className={`${bentoClass} w-full h-full`}
+                >
+                  <PortfolioItem 
+                    item={item} 
+                    aspectRatio="h-full w-full" 
+                    onInstagramClick={setSelectedInstagramProject}
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* DESTINATION WEDDINGS HIGHLIGHT */}
       <DestinationWeddingSection />
 
@@ -413,7 +471,13 @@ const Home = () => {
         </div>
       </section>
 
-
+      {/* Live Instagram Modal Popup */}
+      <InstagramModal
+        isOpen={!!selectedInstagramProject}
+        onClose={() => setSelectedInstagramProject(null)}
+        instagramUrl={selectedInstagramProject?.instagramUrl}
+        projectTitle={selectedInstagramProject?.title}
+      />
 
     </motion.div>
   );
