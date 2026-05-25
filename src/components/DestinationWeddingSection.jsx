@@ -7,22 +7,22 @@ const DestinationWeddingSection = () => {
     {
       city: "Eden Greenz",
       theme: "Luxury Lawns & Banquets",
-      image: "https://images.unsplash.com/photo-1519225495810-7512c696505a?auto=format&fit=crop&q=80&w=400&h=500"
+      image: "https://static.wixstatic.com/media/4eb2df_2be7d85f382749b594f61ea5bbf51110~mv2.jpg/v1/fill/w_995,h_766,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/4eb2df_2be7d85f382749b594f61ea5bbf51110~mv2.jpg"
     },
     {
       city: "Chattarpur Farms",
       theme: "Grand Estates & Gardens",
-      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=400&h=500"
+      image: "https://images.jdmagicbox.com/comp/nagpur/m1/0712px712.x712.171120103327.j4m1/catalogue/chattarpur-farms-dighori-nagpur-banquet-halls-xBajT9sCaNXZEXo.jpg"
     },
     {
       city: "Chokar Dhani",
       theme: "Ethnic Resort & Heritage",
-      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=400&h=500"
+      image: "https://instagram.fnag12-1.fna.fbcdn.net/v/t51.82787-15/580930470_18415790779189933_3484081584486189304_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=Mzc2MjY5NjEwMDcxMDEwNjQ2Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=hpJBvzaPvH4Q7kNvwFCA1dL&_nc_oc=Adqs2FO1IqtuaMUfCDw_A-RMoFXhri1eGZz7nj5b3_cq7KQfFiYVzItBPSLSpLc97S0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fnag12-1.fna&_nc_gid=giFn1x2FoSjP6zP9PWfWvg&_nc_ss=7a22e&oh=00_Af4UO-uabRTiWaQDmBsS01Jm04blrasesI-e-b9gJO57vg&oe=6A1A6DDE"
     },
     {
       city: "Pench Wilderness",
       theme: "Scenic Forest Weddings",
-      image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&q=80&w=400&h=500"
+      image: "https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/3785/Dinning%20at%20Baghvan,%20Pench%20National%20Park.jpg?crop=800:420&downsize=800:420?downsize=inherit:inherit"
     }
   ];
 
