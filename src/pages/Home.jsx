@@ -342,23 +342,21 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Bento Style Grid for Home Page Showcase */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 auto-rows-[340px] md:auto-rows-[250px] lg:auto-rows-[280px]">
-            {portfolioData.slice(0, 6).map((item, index) => {
-              // Custom bento layout template for 6 items on home page
-              const bentoClass = index === 0 ? "md:col-span-2 md:row-span-2" : "md:col-span-1 md:row-span-1";
+          {/* 3-Column Grid for Home Page Showcase */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {portfolioData.slice(0, 3).map((item, index) => {
               return (
                 <motion.div
                   key={item.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.05 }}
-                  className={`${bentoClass} w-full h-full`}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="w-full"
                 >
                   <PortfolioItem 
                     item={item} 
-                    aspectRatio="h-full w-full" 
+                    aspectRatio="aspect-[4/5]" 
                     onInstagramClick={setSelectedInstagramProject}
                   />
                 </motion.div>
