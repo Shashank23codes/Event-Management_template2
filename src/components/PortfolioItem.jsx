@@ -78,7 +78,7 @@ const PortfolioItem = ({ item, aspectRatio = "aspect-4/5", onInstagramClick }) =
                     e.stopPropagation();
                     if (onInstagramClick) onInstagramClick(item);
                   }}
-                  className="inline-flex items-center justify-center gap-2 w-full text-[9px] font-bold uppercase tracking-[0.2em] text-white hover:text-[#1a1917] hover:bg-white bg-pink-700/80 hover:border-white border border-pink-500/30 px-5 py-3 rounded-full transition-all duration-300 focus:outline-none cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 w-full text-[9px] font-bold uppercase tracking-[0.2em] text-white hover:text-deep-teal hover:bg-white bg-pink-700/80 hover:border-white border border-pink-500/30 px-5 py-3 rounded-full transition-all duration-300 focus:outline-none cursor-pointer"
                 >
                   <Instagram size={11} />
                   <span>View Live Feed</span>
